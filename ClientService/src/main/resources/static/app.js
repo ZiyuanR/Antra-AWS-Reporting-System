@@ -64,11 +64,28 @@ function downloadFile(urlToSend) {
     };
     req.send();
 }
+//delete function--start
 function showDelete(reqId){
     if(confirm("Are you sure to delete report?")){
-        //alert('Not implemented');
+    	deleteFile('/report/'+reqId);
     }
 }
+function deleteFile(urlToSend) {
+    var req = new XMLHttpRequest();
+    req.open("DELETE", urlToSend, true);	
+    req.onload = function (event) {
+        console.info(event);
+    	//alert("check");
+        if(req.status === 200) {	
+        	alert("delete successfully");
+        	window.location.reload(true);
+        } else{
+            alert('Error in delete');
+        }
+    };
+    req.send();
+}
+//delete function--end
 function actionLinks(ps, es, id) {
     return (ps === 'COMPLETED'?"<a onclick='downloadPDF(\""+id+"\")' href='#'>Download PDF</a>":"")
         + (es === 'COMPLETED'?"<a onclick='downloadExcel(\""+id+"\")' style='margin-left: 1em' href='#'>Download Excel</a>":"")

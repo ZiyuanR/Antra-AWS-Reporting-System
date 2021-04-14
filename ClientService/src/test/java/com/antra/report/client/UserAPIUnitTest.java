@@ -51,7 +51,7 @@ public class UserAPIUnitTest {
     @Test
     public void testDeleteReportButExceptionRaised(){
     	Mockito.when(reportService.removeFile(String.valueOf(anyInt()))).thenThrow(new RequestNotFoundException("The file you want to delete is not found"));
-        given().accept("application/json").get("/report/1").peek().
+        given().accept("application/json").get("/report/11").peek().
                 then().assertThat()
                 .statusCode(404)
                 .body("message",Matchers.is("The file you want to delete is not found"));

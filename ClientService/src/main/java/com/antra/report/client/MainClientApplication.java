@@ -10,7 +10,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 //@EnableFeignClients //start Feign client  //eureka+feign+ribbon
-@EnableRetry
+//@EnableRetry
 @EnableCircuitBreaker //start Hystrix
 @EnableDiscoveryClient //start service registeration and discovery
 @SpringBootApplication
@@ -20,10 +20,12 @@ public class MainClientApplication {
   @LoadBalanced
   @Bean
   public RestTemplate restTemplate(){
-	  //set timeout 
+	  /*set timeout 
 	  HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
 	  clientHttpRequestFactory.setConnectTimeout(3000);
 	  return new RestTemplate(clientHttpRequestFactory);
+      */
+      return new RestTemplate();
   }
 
 

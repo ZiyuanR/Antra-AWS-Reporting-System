@@ -90,7 +90,7 @@ public class ReportServiceImpl implements ReportService {
   //TODO:Change to parallel process using Threadpool? CompletableFuture?
     @HystrixCommand(fallbackMethod="sendDirectRequestsByHystrix",
     		commandProperties= {
-    				@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds", value="2000")
+    				@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds", value="3000")
     		})
     private void sendDirectRequests(ReportRequest request) {
         //eureka+ribbon+resttemplate
